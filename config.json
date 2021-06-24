@@ -1,0 +1,8 @@
+[
+    {
+        "token": "BOT TOKEN HERE",
+        "prefix": "q.",
+        "owner": "YOUR ID HERE",
+        "auth": []
+    }
+]
