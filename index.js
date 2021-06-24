@@ -24,7 +24,7 @@ client.once('ready', () => {
     });
 });
 
-function isSpin(_id) {
+function isOwner(_id) {
     return _id === config[0].owner;
 }
 
@@ -54,7 +54,7 @@ client.on('message', async message => {
    if (message.content.startsWith(`${prefix}pair`)) {
        console.log(authCode);
        if (authCode === undefined) {
-            if (!isSpin(message.author.id)) return message.channel.send('You are not spin, idiot.');
+            if (!isOwner(message.author.id)) return message.channel.send('You are not spin, idiot.');
             tv.pairing.initiate().then(response => {
                 const filter = m => m.author.id === message.author.id;
                 message.channel.awaitMessages(filter, {
@@ -109,7 +109,7 @@ client.on('message', async message => {
 // volume control
 client.on('message', async message => {
     if (message.content.startsWith(`${prefix}vol`)) {
-        if (!isSpin(message.author.id)) return message.channel.send('You are not spin, idiot.');
+        if (!isOwner(message.author.id)) return message.channel.send('You are not spin, idiot.');
         let args = message.content.replace(`${prefix}vol `, '');
         args = args.split(' ');
 
@@ -132,7 +132,7 @@ client.on('message', async message => {
 // power control
 client.on('message', async message => {
     if (message.content.startsWith(`${prefix}power`)) {
-        if (!isSpin(message.author.id)) return message.channel.send('You are not spin, idiot.');
+        if (!isOwner(message.author.id)) return message.channel.send('You are not spin, idiot.');
         tv.control.power.toggle();
     }
 });
@@ -140,7 +140,7 @@ client.on('message', async message => {
 // sleep timer
 client.on('message', async message => {
     if (message.content.startsWith(`${prefix}sleep`)) {
-        if (!isSpin(message.author.id)) return message.channel.send('You are not spin, idiot.');
+        if (!isOwner(message.author.id)) return message.channel.send('You are not spin, idiot.');
         let _value;
         let args = message.content.replace(`${prefix}sleep `, '');
         args = args.split(' ');
