@@ -15,7 +15,7 @@ You will need:
 
 You will need these installed:
 ```
-npm i discord.js vizio-smart-cast
+npm i discord.js@12.5.3 vizio-smart-cast
 ```
 
 ## Starting the Bot
